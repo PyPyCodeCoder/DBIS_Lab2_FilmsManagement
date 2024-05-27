@@ -21,6 +21,8 @@ from queries_managers.simple_query5_manager import SimpleQuery5Manager
 from queries_managers.complex_query1_manager import ComplexQuery1Manager
 from queries_managers.complex_query2_manager import ComplexQuery2Manager
 from queries_managers.complex_query3_manager import ComplexQuery3Manager
+from queries_managers.complex_query4_manager import ComplexQuery4Manager
+from queries_managers.complex_query5_manager import ComplexQuery5Manager
 
 
 def create_connection():
@@ -76,6 +78,13 @@ class MainWindow(QMainWindow):
         self.add_menu_button("Find Actors filming in same Countries", self.complex_query1)
         self.add_menu_button("Find Studios filming in all Genres", self.complex_query2)
         self.add_menu_button("Get Actor pairs for a specific period", self.complex_query3)
+
+        label = QLabel("Queries suggested by teacher:")
+        label.setAlignment(Qt.AlignCenter)
+        self.menu_layout.addWidget(label)
+
+        self.add_menu_button("Find Actors who acted in all Films of a specific Actor and more", self.complex_query4)
+        self.add_menu_button("Find Actors with exact Film match", self.complex_query5)
 
         self.menu.setLayout(self.menu_layout)
 
@@ -172,6 +181,16 @@ class MainWindow(QMainWindow):
         self.clear_layout(self.main_content_layout)
         complex_query3_widget = ComplexQuery3Manager(self.connection)
         self.main_content_layout.addWidget(complex_query3_widget)
+
+    def complex_query4(self):
+        self.clear_layout(self.main_content_layout)
+        complex_query4_widget = ComplexQuery4Manager(self.connection)
+        self.main_content_layout.addWidget(complex_query4_widget)
+
+    def complex_query5(self):
+        self.clear_layout(self.main_content_layout)
+        complex_query5_widget = ComplexQuery5Manager(self.connection)
+        self.main_content_layout.addWidget(complex_query5_widget)
 
     @staticmethod
     def clear_layout(layout):

@@ -40,7 +40,7 @@ class ComplexQuery1Manager(QWidget):
             FROM Worker
             JOIN FilmWorkers ON Worker.worker_id = FilmWorkers.worker_id
             JOIN Film ON FilmWorkers.film_id = Film.film_id
-            WHERE Film.name = ? AND FilmWorkers.position = 'actor'
+            WHERE Film.name = ? AND FilmWorkers.position = 'Actor'
         """, (film_name,))
         actors = cursor.fetchall()
         self.actor_combo_box.addItems([actor[0] for actor in actors])
